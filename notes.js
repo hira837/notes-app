@@ -7,17 +7,17 @@ const getYourName = () => {
 
 const addNote = (title, body) => {
   const notes = loadNotes()
-  const dupilicateNotes = notes.filter((note) => note.title === title)
+  const dupilicateNote = notes.find((note) => note.title === title)
 
-  if(dupilicateNotes.length === 0) {
+  if (!dupilicateNote) {
     notes.push({
       title: title,
       body: body,
     });
     saveNotes(notes);
-    console.log('New note added!')
+    console.log(chalk.green.inverse('New note added!'))
   } else {
-    console.log('Note title taken!')
+    console.log(chalk.red.inverse('Note title taken!'))
   }
 
 }
@@ -47,10 +47,10 @@ const listNotes = () => {
 const readNotes = (title) => {
   const notes = loadNotes()
   console.log('reding note')
-  const noteToRead = notes.filter((note) => note.title === title)
-  console.log(noteToRead)
-  if(noteToRead.length) {
-    console.log(noteToRead)
+  const noteToRead = notes.find((note) => note.title === title)
+  if(noteToRead) {
+    console.log(noteToRead.title)
+    console.log(noteToRead.body)
     console.log(chalk.green.inverse("Note read"))
   } else {
     console.log(chalk.red.inverse("Note is not read"))
