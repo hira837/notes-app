@@ -34,6 +34,29 @@ const removeNote = (title) => {
   }
 };
 
+const listNotes = () => {
+  const notes = loadNotes()
+  // const notesTitle = notes.map((note) => note.title)
+  // console.log(chalk.red.inverse(notesTitle))
+  // return notesTitle
+  notes.forEach((note) => {
+    console.log(chalk.inverse(note.title))
+  })
+}
+
+const readNotes = (title) => {
+  const notes = loadNotes()
+  console.log('reding note')
+  const noteToRead = notes.filter((note) => note.title === title)
+  console.log(noteToRead)
+  if(noteToRead.length) {
+    console.log(noteToRead)
+    console.log(chalk.green.inverse("Note read"))
+  } else {
+    console.log(chalk.red.inverse("Note is not read"))
+  }
+}
+
 const saveNotes = (notes) => {
   const dataJSON = JSON.stringify(notes)
   fs.writeFileSync('notes.json', dataJSON)
@@ -52,5 +75,7 @@ const loadNotes = () => {
 module.exports = {
   getYourName: getYourName,
   addNote: addNote,
-  removeNote: removeNote
+  removeNote: removeNote,
+  listNotes: listNotes,
+  readNotes: readNotes
 };
