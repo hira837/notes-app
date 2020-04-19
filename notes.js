@@ -5,11 +5,9 @@ const getYourName = function() {
   return 'Success!'
 }
 
-const addNote = function(title, body) {
+const addNote = (title, body) => {
   const notes = loadNotes()
-  const dupilicateNotes = notes.filter(function(note) {
-    return note.title === title
-  })
+  const dupilicateNotes = notes.filter((note) => note.title === title)
 
   if(dupilicateNotes.length === 0) {
     notes.push({
@@ -26,9 +24,7 @@ const addNote = function(title, body) {
 
 const removeNote = function (title) {
   const notes = loadNotes();
-  const notesToKeep = notes.filter(function (note) {
-    return note.title !== title;
-  });
+  const notesToKeep = notes.filter((note) => note.title !== title)
 
   if (notesToKeep.length !== notes.length) {
     console.log(chalk.green.inverse("Note removed!"));
