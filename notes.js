@@ -69,7 +69,6 @@ const loadNotes = () => {
 }
 
 module.exports = {
-  getYourName: getYourName,
   addNote: addNote,
   removeNote: removeNote,
   listNotes: listNotes,
