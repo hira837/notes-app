@@ -1,7 +1,7 @@
 const fs = require('fs')
 const chalk = require("chalk");
 
-const getYourName = function() {
+const getYourName = () => {
   return 'Success!'
 }
 
@@ -22,7 +22,7 @@ const addNote = (title, body) => {
 
 }
 
-const removeNote = function (title) {
+const removeNote = (title) => {
   const notes = loadNotes();
   const notesToKeep = notes.filter((note) => note.title !== title)
 
@@ -34,12 +34,12 @@ const removeNote = function (title) {
   }
 };
 
-const saveNotes = function(notes) {
+const saveNotes = (notes) => {
   const dataJSON = JSON.stringify(notes)
   fs.writeFileSync('notes.json', dataJSON)
 }
 
-const loadNotes = function() {
+const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync('notes.json')
     const dataJSON = dataBuffer.toString()
